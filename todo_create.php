@@ -4,26 +4,22 @@
 // var_dump($_POST);
 // exit();
 
-
-// ↓ 'ParamError'が表示されたらデータが送られていない
-// ＝空欄で送信されたとか
-// ＝'ParamError'が表示されなければ、正常にデータ送られている
-if (
-  !isset($_POST['todo']) || $_POST['todo'] == '' ||
-  !isset($_POST['deadline']) || $_POST['deadline'] == ''
-) {
-  exit('ParamError');
-}
-
 // ↓POSTで送ったname属性のtodoとdeadlineを、
 // $todoと$deadlineの変数に入れる
-$todo = $_POST['todo'];
-$deadline = $_POST['deadline'];
+$name = $_POST['name'];
+$interest = $_POST['interest'];
+$Dr = $_POST['Dr'];
+$DH = $_POST['DH'];
+$sonota = $_POST['sonota'];
+$maker = $_POST['maker'];
+$kikan = $_POST['kikan'];
+$problem = $_POST['problem'];
+$point = $_POST['point'];
 
 
 
 // DB接続情報
-$dbn = 'mysql:dbname=gsacf_d07_30;charset=utf8;port=3306;host=localhost';
+$dbn = 'mysql:dbname=gsacf_d07_30_memoapp;charset=utf8;port=3306;host=localhost';
 $user = 'root';
 $pwd = '';
 
@@ -38,13 +34,37 @@ try {
   exit();
 }
 
+// ↓ 'ParamError'が表示されたらデータが送られていない
+// ＝空欄で送信されたとか
+// ＝'ParamError'が表示されなければ、正常にデータ送られている
+if (
+  !isset($_POST['name']) || $_POST['name'] == '' ||
+  !isset($_POST['interest']) || $_POST['interest'] == '' ||
+  !isset($_POST['Dr']) || $_POST['Dr'] == '' ||
+  !isset($_POST['DH']) || $_POST['DH'] == '' ||
+  !isset($_POST['sonota']) || $_POST['sonota'] == '' ||
+  !isset($_POST['maker']) || $_POST['maker'] == '' ||
+  !isset($_POST['kikan']) || $_POST['kikan'] == '' ||
+  !isset($_POST['problem']) || $_POST['problem'] == '' ||
+  !isset($_POST['point']) || $_POST['point'] == ''
+) {
+  exit('ParamError');
+}
+
 // SQL作成&実行
 $sql = 'INSERT INTO
-todo_table(id, todo, deadline, created_at, updated_at)
-VALUES(NULL, :todo, :deadline, sysdate(), sysdate())';
+todo_table(id, name, interest, Dr, DH, sonota, maker, kikan, problem, point, created_at, updated_at)
+VALUES(NULL, :name, :interest, :Dr, :DH, :sonota, :maker, :kikan, :plobrem, :point, sysdate(), sysdate())';
 $stmt = $pdo->prepare($sql);
-$stmt->bindValue(':todo', $todo, PDO::PARAM_STR);
-$stmt->bindValue(':deadline', $deadline, PDO::PARAM_STR);
+$stmt->bindValue(':name', $name, PDO::PARAM_STR);
+$stmt->bindValue(':interest', $interest, PDO::PARAM_STR);
+$stmt->bindValue(':Dr', $Dr, PDO::PARAM_STR);
+$stmt->bindValue(':DH', $DH, PDO::PARAM_STR);
+$stmt->bindValue(':sonota', $sonota, PDO::PARAM_STR);
+$stmt->bindValue(':maker', $maker, PDO::PARAM_STR);
+$stmt->bindValue(':kikan', $kikan, PDO::PARAM_STR);
+$stmt->bindValue(':problem', $problem, PDO::PARAM_STR);
+$stmt->bindValue(':point', $point, PDO::PARAM_STR);
 
 // SQLを実行する
 $status = $stmt->execute();

@@ -1,0 +1,108 @@
+body{
+    background: url(./img/back.jpg)
+}
+
+.main{
+align-items: center;
+width: 1000px;
+background-color: white;
+margin-left: auto;
+margin-right: auto;
+}
+
+
+.h1{
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 5px;
+}
+
+.dl1{
+    display: flex;
+}
+
+.namearea{
+    padding-left: 30px;
+}
+
+.namebox{
+    width: 250px;
+    height: 20px;
+}
+
+.interestarea{
+margin-left: 50px;
+}
+
+.interestbox{
+    width: 450px;
+    height: 20px;
+}
+
+.kihon{
+    padding-left: 50px;
+}
+
+.staff{
+display: flex;
+}
+
+.staffkind{
+    display: flex;
+    align-items: flex-start;
+}
+
+.list{
+display: flex;
+margin: cover;
+list-style: none;
+
+}
+
+.dr{
+width: 50px;
+}
+
+.DH{
+    padding-left: 50px;
+}
+
+.sonota{
+    padding-left: 50px;
+}
+
+.system{
+padding-left: 50px;
+}
+
+.maker{
+padding-left: 50px;
+}
+
+.kikan{
+    padding-left: 50px;
+}
+
+.problem_point{
+    display: flex;
+}
+
+.problembox{
+padding-left: 50px;
+}
+
+.pointbox{
+padding-left: 50px;
+}
+
+.buttonarea{
+    display: flex;
+}
+
+.save{
+justify-content: center;
+}
+
+.open{
+    justify-content: center;
+}

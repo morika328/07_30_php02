@@ -3,7 +3,7 @@
 
 
 // DB接続情報
-$dbn = 'mysql:dbname=gsacf_d07_30;charset=utf8;port=3306;host=localhost';
+$dbn = 'mysql:dbname=gsacf_d07_30_memoapp;charset=utf8;port=3306;host=localhost';
 $user = 'root';
 $pwd = '';
 
@@ -17,7 +17,7 @@ try {
 // ↑「dbError:...」が表示されたらdb接続でエラーが発生していることがわかる
 
 // SELECT文でデータ参照をおこなう
-$sql = 'SELECT * FROM todo_table';
+$sql = 'SELECT * FROM memo_table';
 
 // $statusにSQLの実行結果が入る（取得したデータではない点に注意）
 $stmt = $pdo->prepare($sql);
@@ -38,8 +38,15 @@ if ($status == false) {
   $output = "";
   foreach ($result as $record) {
     $output .= "<tr>";
-    $output .= "<td>{$record["deadline"]}</td>";
-    $output .= "<td>{$record["todo"]}</td>";
+    $output .= "<td>{$record["name"]}</td>";
+    $output .= "<td>{$record["interest"]}</td>";
+    $output .= "<td>{$record["Dr"]}</td>";
+    $output .= "<td>{$record["DH"]}</td>";
+    $output .= "<td>{$record["sonota"]}</td>";
+    $output .= "<td>{$record["maker"]}</td>";
+    $output .= "<td>{$record["kikan"]}</td>";
+    $output .= "<td>{$record["problem"]}</td>";
+    $output .= "<td>{$record["point"]}</td>";
     $output .= "</tr>";
   }
 }
@@ -53,12 +60,12 @@ if ($status == false) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DB連携型todoリスト（一覧画面）</title>
+  <title>メモ一覧（一覧画面）</title>
 </head>
 
 <body>
   <fieldset>
-    <legend>DB連携型todoリスト（一覧画面）</legend>
+    <legend>メモ一覧（一覧画面）</legend>
     <a href="todo_input.php">入力画面</a>
     <table>
       <thead>
